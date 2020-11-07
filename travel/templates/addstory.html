@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+
+       <!--================Add Story Area =================-->
+    <section class="contact_area section-gap">
+        <div class="container">
+             <div class="row">
+                 <div class="col-lg-12 pb-5">
+                     <h2 class="text-center">Travel Blog</h2>
+                 </div>
+                 <div class="col-lg-12 pt-4">
+                    <form class="row contact_form" action="contact_process.php" method="post" id="contactForm"
+                    novalidate="novalidate">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="Title" placeholder="Enter Blog Title">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="file" class="form-control" name="img1">
+                        </div>
+                        <div class="form-group">
+                            <input type="file" class="form-control" name="img2">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="file" class="form-control" name="img3">
+                        </div>
+                        <div class="form-group">
+                            <input type="file" class="form-control" name="img4">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <textarea class="form-control" name="message"  rows="1" placeholder="Enter Description"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-12 text-right">
+                        <button type="submit" value="submit" class="btn submit_btn">Submit Blog</button>
+                    </div>
+                </form>
+                 </div>
+             </div>
+        </div>
+    </section>
+    <!--================Add Story Area =================-->
+
+    {% endblock %}

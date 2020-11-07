@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <!--================ Banner Area =================-->    <!--================ End Banner Area =================-->
+
+    <!--================Sign Up Area =================-->
+    <section class="contact_area section-gap">
+        <div class="container text-center justify-content-center">
+           
+            <div class="map-wrap" style="width:100%;" id="mapBox"></div>
+            <div class="row">
+                
+                <div class="col-lg-9 mx-auto text-center justify-content-center">
+                    <form class="row signup_form" action="" method="POST" id="signuptForm">
+                        {{ form.hidden_tag() }}
+                        <div class="col-md-6 mx-auto text-center justify-content-center col-md-offset-3" style="font-family: Bree Serif, serif;">
+                           
+                            <div class="form-group" >
+                                {{ form.username.label(class="control-label float-left") }}
+                                {% if form.username.errors %}
+                                    {{ form.username(class="form-control is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.username.errors %}
+                                        <span>{{ error }}</span>
+                                        {% endfor %}
+                                      
+                                    </div>
+                                    {% else %}
+                                    {{ form.username(class="form-control") }} 
+                                {% endif %}
+                                
+                            </div>
+                            <div class="form-group">
+                                {{ form.email.label(class="control-label float-left") }}
+                                {% if form.email.errors %}
+                                    {{ form.email(class="form-control is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.email.errors %}
+                                        <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                    {% else %}
+                                    {{ form.email(class="form-control") }} 
+                                {% endif %}
+                            </div>
+                            <div class="form-group">
+                                {{ form.password.label(class="control-label float-left") }}
+                                {% if form.password.errors %}
+                                    {{ form.password(class="form-control is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.password.errors %}
+                                        <span>{{ error }}</span>
+                                        {% endfor %}  
+                                    </div>
+                                    {% else %}
+                                    {{ form.password(class="form-control") }} 
+                                {% endif %}
+                                
+                               </div>
+                            <div class="form-group">
+                                {{ form.confirm_password.label(class="control-label float-left") }}
+                                {% if form.confirm_password.errors %}
+                                    {{ form.confirm_password(class="form-control is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.confirm_password.errors %}
+                                        <span>{{ error }}</span>
+                                        {% endfor %}  
+                                    </div>
+                                    {% else %}
+                                    {{ form.confirm_password(class="form-control") }} 
+                                {% endif %}   
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-12 mx-auto text-center justify-content-center" style="font-family: Bree Serif, serif;">
+                            {{ form.submit(class="btn submit_btn") }}
+                        
+                        </div>
+                    </form>
+                    <div class="pt-3">
+                        <small class="text-muted">
+                            Already have an account!! <a class="ml-2" href="{{ url_for('home') }}">Sign In</a> 
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endblock%}
+    <!--================Contact Area =================-->
+
+   
