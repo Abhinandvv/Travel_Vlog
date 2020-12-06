@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- Edit profile page start -->
+{% for error in form.username.errors or form.email.errors %}
+    <div class="alert alert-danger text-center" role="alert"> 
+        <p class="text-center">Update Unsuccessful!</p> 
+    {% for error in form.username.errors %}
+            {{ error }}! &nbsp;
+    {% endfor %}
+    {% for error in form.email.errors %}
+             {{ error }}!
+    {% endfor %}
+    </div>
+{% endfor %}
+    <section class="py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 border-right border-secondary">
+                    <!-- user image -->
+                    <div class="text-center">
+                        <img src="{{ image_file }}" class="rounded-circle" alt="Profile-pic" style="width: 150px; height: 150px;">
+                        <div class="py-3">
+                            <h6 class="font-weight-bold py-2 text-uppercase">{{ current_user.username }}</h6>
+                            <p>{{ current_user.email }}</p>
+                            <p>1234567890</p>
+                        </div>
+                    </div>   
+                </div>
+                <div class="col-lg-8">
+                    <div class="float-right">
+                        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal1" style="border-radius: 17px;">Edit Profile</button>
+                    </div>
+                    <!-- Edit Profile -->
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                                <div class="modal-header">
+                                     <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form method="POST" action="" enctype="multipart/form-data">
+                                    {{ form.hidden_tag() }}
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                        {{ form.username.label(class="control-label float-left") }}
+                                        {% if form.username.errors %}
+                                        {{ form.username(class="form-control is-invalid") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.username.errors %}
+                                            <span>{{ error }}</span>
+                                            {% endfor %}
+                                         </div>
+                                             {% else %}
+                                             {{ form.username(class="form-control") }} 
+                                             {% endif %}
+                                         </div>
+                                        <div class="form-group">
+                                         {{ form.email.label(class="control-label float-left") }}
+                                         {% if form.email.errors %}
+                                            {{ form.email(class="form-control is-invalid") }}
+                                            <div class="invalid-feedback">
+                                                {% for error in form.email.errors %}
+                                                <span>{{ error }}</span>
+                                                {% endfor %}
+                                            </div>
+                                            {% else %}
+                                            {{ form.email(class="form-control") }} 
+                                            {% endif %}
+                                         </div>
+                                         <div class="form-group">
+                                            {{ form.picture.label() }}
+                                            {{ form.picture(class="form-control-file") }}
+                                            {% if form.picture.errors %}
+                                            {% for error in form.picture.errors %}
+                                            <span class="text-danger">{{ error }}</span> </br>
+                                            {% endfor %}
+                                            {% endif %}
+                                         </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            {{ form.submit(class="btn btn-primary") }}
+                                         </div>
+                                    </div>>
+                                </form>
+                          </div>
+                        </div>
+                    </div>
+                    <!-- End Edit Profile-->
+                    <h6 class="font-weight-bold text-uppercase">{{ current_user.username }}</h6>
+                    <p class="text-primary">Web Developer and Designer</p>
+                    <p class="text-secondary"><small>RANKING : <b>8/10</b></small></p>
+
+                    <nav class="py-2">
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                          <a class="nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">About</a>
+                          <a class="nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Vlogs</a>
+                        </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                            <div class="row px-4 py-4">
+                                <div class="col-lg-6">
+                                    <p class="font-weight-bold">User Id</p>
+                                    <p class="font-weight-bold">Name</p>
+                                    <p class="font-weight-bold">Email</p>
+                                    <p class="font-weight-bold">Phone</p>
+                                    <p class="font-weight-bold">Profession</p>
+                                </div>
+                                <div class="col-lg-6">
+                                    <p class="text-primary">Johnwick007</p>
+                                    <p class="text-primary">John Wick</p>
+                                    <p class="text-primary">johnwick@bond.com</p>
+                                    <p class="text-primary">1234567890</p>
+                                    <p class="text-primary">Profession</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                         <article class="media-content-section">
+                             <div class="media-body">
+                                 <div class="article-metadata">
+                                   
+                                    <div>
+                                        <a class="btn btn-primary btn-sm m-1" href="{{ url_for('update_post',post_id=post.id) }}">Update</a>
+                                    </div>
+                                 </div>
+                             </div>
+                         </article>
+                          <!-- your vlog details -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endblock %}
+   

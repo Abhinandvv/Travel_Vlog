@@ -58,7 +58,7 @@
 			<div class="row">
 				<nav class="navbar navbar-expand-lg navbar-dark col-lg-12">
 		  <a class="navbar-brand" href="#">
-			<img src="{{ url_for('static', filename='img/tripoto.svg') }}" alt="" loading="lazy">
+			<img src="{{ url_for('static', filename='img/tripoto.png') }}" style="height:60px; width:150px;" alt="" loading="lazy">
 		  </a>
 		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -76,7 +76,10 @@
 			  </li>
 			  {% if current_user.is_authenticated %}
 			  <li class="nav-item">
-				<a class="nav-link font-weight-bold text-white" href="{{ url_for('addstory') }}">Add Story</a>
+				<a class="nav-link font-weight-bold text-white" href="{{ url_for('account') }}">Account</a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link font-weight-bold text-white" href="{{ url_for('addstory') }}">New Story</a>
 			  </li>
 			  <li class="nav-item">
 				<a class="nav-link font-weight-bold text-white" href="{{ url_for('logout') }}">Logout</a>

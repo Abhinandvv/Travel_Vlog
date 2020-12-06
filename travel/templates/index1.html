@@ -11,164 +11,40 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="container-fluid">
-			<div class="row owl-carousel" id="travel_cat">
-				<div class="single_travel wow fadeIn" data-wow-duration="1s">
-					<figure>
-						<img class="img-fluid" src="{{ url_for('static', filename='img/travel/t1.jpg') }}" alt="">
-					</figure>
-					<div class="overlay"></div>
-					<div class="text-wrap">
-						<h3>
-							<a href="#" style="font-family: Bree Serif, serif;">Waterfall Travel</a>
-						</h3>
-						<div class="blog-meta white d-flex justify-content-between align-items-center flex-wrap">
-							<div class="meta">
-								<a href="#">
-									<span class="icon fa fa-calendar"></span> March 14, 2018
+		 </div>
+		 
+	     <div class="container-fluid">
+			 <div class="row owl-carousel" id="travel_cat">
+				{% for post in posts %}
+				 	<div class="single_travel wow fadeIn" data-wow-duration="">
+							<figure>
+							<img class="img-fluid" src="{{ url_for('static', filename='img/travel/t1.jpg') }}" alt="">
+							</figure>
+							<div class="overlay"></div>
+							<div class="text-wrap">
+								<h3>
+								<a href="#" style="font-family: Bree Serif, serif;">{{ post.title }} </a>
+								</h3>
+								<a href="#" style="font-family: Bree Serif, serif;">{{ post.author.username }} </a>
+								<img class="rounded-circle article-img" style="height:50px; width:50px;" src="{{ url_for('static', filename='img/profilepic/' + post.author.image_file) }}">
+								<div class="blog-meta white d-flex justify-content-between align-items-center flex-wrap">
+									<div class="meta">
+									<a href="#">
+									<span class="icon fa fa-calendar"></span> {{ post.date_posted.strftime('%Y-%m-%d') }}
 									<span class="icon fa fa-comments"></span> 05
-								</a>
+									</a>
+									</div>
+									<div>
+									<a class="read_more" href="{{ url_for('post', post_id=post.id) }}">Read More</a>
+									</div>
+								</div>
 							</div>
-							<div>
-								<a class="read_more" href="#">Read More</a>
-							</div>
-						</div>
+							
 					</div>
-				</div>
-				<div class="single_travel wow fadeIn" data-wow-duration="1s" data-wow-delay=".3s">
-					<figure>
-						<img class="img-fluid" src="{{ url_for('static', filename='img/travel/t2.jpg') }}" alt="">
-					</figure>
-					<div class="overlay"></div>
-					<div class="text-wrap">
-						<h3>
-							<a href="#" style="font-family: Bree Serif, serif;">Waterfall Travel</a>
-						</h3>
-						<div class="blog-meta white d-flex justify-content-between align-items-center flex-wrap">
-							<div class="meta">
-								<a href="#">
-									<span class="icon fa fa-calendar"></span> March 14, 2018
-									<span class="icon fa fa-comments"></span> 05
-								</a>
-							</div>
-							<div>
-								<a class="read_more" href="#">Read More</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="single_travel wow fadeIn" data-wow-duration="1s" data-wow-delay=".9s">
-					<figure>
-						<img class="img-fluid" src="{{ url_for('static', filename='img/travel/t3.jpg') }}" alt="">
-					</figure>
-					<div class="overlay"></div>
-					<div class="text-wrap">
-						<h3>
-							<a href="#" style="font-family: Bree Serif, serif;">Waterfall Travel</a>
-						</h3>
-						<div class="blog-meta white d-flex justify-content-between align-items-center flex-wrap">
-							<div class="meta">
-								<a href="#">
-									<span class="icon fa fa-calendar"></span> March 14, 2018
-									<span class="icon fa fa-comments"></span> 05
-								</a>
-							</div>
-							<div>
-								<a class="read_more" href="#" style="font-family: Bree Serif, serif;">Read More</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="single_travel wow fadeIn" data-wow-duration="1s" data-wow-delay=".6s">
-					<figure>
-						<img class="img-fluid" src="{{ url_for('static', filename='img/travel/t2.jpg') }}" alt="">
-					</figure>
-					<div class="overlay"></div>
-					<div class="text-wrap">
-						<h3>
-							<a href="#" style="font-family: Bree Serif, serif;">Waterfall Travel</a>
-						</h3>
-						<div class="blog-meta white d-flex justify-content-between align-items-center flex-wrap">
-							<div class="meta">
-								<a href="#">
-									<span class="icon fa fa-calendar"></span> March 14, 2018
-									<span class="icon fa fa-comments"></span> 05
-								</a>
-							</div>
-							<div>
-								<a class="read_more" href="#">Read More</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="single_travel wow fadeIn" data-wow-duration="1s" data-wow-delay=".9s">
-					<figure>
-						<img class="img-fluid" src="{{ url_for('static', filename='img/travel/t3.jpg') }}" alt="">
-					</figure>
-					<div class="overlay"></div>
-					<div class="text-wrap">
-						<h3>
-							<a href="#" style="font-family: Bree Serif, serif;">Waterfall Travel</a>
-						</h3>
-						<div class="blog-meta white d-flex justify-content-between align-items-center flex-wrap">
-							<div class="meta">
-								<a href="#">
-									<span class="icon fa fa-calendar"></span> March 14, 2018
-									<span class="icon fa fa-comments"></span> 05
-								</a>
-							</div>
-							<div>
-								<a class="read_more" href="#" style="font-family: Bree Serif, serif;">Read More</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="single_travel wow fadeIn" data-wow-duration="1s" data-wow-delay=".6s">
-					<figure>
-						<img class="img-fluid" src="{{ url_for('static', filename='img/travel/t1.jpg') }}" alt="">
-					</figure>
-					<div class="overlay"></div>
-					<div class="text-wrap">
-						<h3>
-							<a href="#" style="font-family: Bree Serif, serif;">Waterfall Travel</a>
-						</h3>
-						<div class="blog-meta white d-flex justify-content-between align-items-center flex-wrap">
-							<div class="meta">
-								<a href="#">
-									<span class="icon fa fa-calendar"></span> March 14, 2018
-									<span class="icon fa fa-comments"></span> 05
-								</a>
-							</div>
-							<div>
-								<a class="read_more" href="#">Read More</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="single_travel wow fadeIn" data-wow-duration="1s" data-wow-delay=".9s">
-					<figure>
-						<img class="img-fluid" src="{{ url_for('static', filename='img/travel/t2.jpg') }}" alt="">
-					</figure>
-					<div class="overlay"></div>
-					<div class="text-wrap">
-						<h3>
-							<a href="#" style="font-family: Bree Serif, serif;">Waterfall Travel</a>
-						</h3>
-						<div class="blog-meta white d-flex justify-content-between align-items-center flex-wrap">
-							<div class="meta">
-								<a href="#">
-									<span class="icon fa fa-calendar"></span> March 14, 2018
-									<span class="icon fa fa-comments"></span> 05
-								</a>
-							</div>
-							<div>
-								<a class="read_more" href="#" style="font-family: Bree Serif, serif;">Read More</a>
-							</div>
-						</div>
-					</div>
+					{% endfor %}
 				</div>
 			</div>
+			
 		</div>
 	</section>
 	<!--================ End Travel Category Area =================-->
@@ -414,6 +290,6 @@
 			</div>
 		</div>
 	</section>
-	{% endblock%}
+	{% endblock %}
 	<!--================ End Places Area =================-->
 	
