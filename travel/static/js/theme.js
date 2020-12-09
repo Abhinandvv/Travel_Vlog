@@ -85,7 +85,7 @@
             items: 3,
             nav: false,
             dots: true,
-            loop: true,
+            loop: false,
             margin: 30,
             singleItem: false,
             autoplay: 2500,

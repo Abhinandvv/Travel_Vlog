@@ -40,5 +40,6 @@ class UpdateAccountForm(FlaskForm):
                 raise ValidationError('Email Already Exists')
 class PostForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
+    picture = FileField('Upload Picture', validators=[DataRequired(), FileAllowed(['jpg', 'png'])])
     content =  TextAreaField('Content', validators=[DataRequired()])
     submit = SubmitField('Post')
