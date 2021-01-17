@@ -16,33 +16,100 @@
 	     <div class="container-fluid">
 			
 			 <div class="row owl-carousel" id="travel_cat">
-				{% for post in posts %}
+				
 				 	<div class="single_travel wow fadeIn" data-wow-duration="">
 							<figure>
-							<img class="img-fluid" src="{{ url_for('static', filename='img/travel/t1.jpg') }}" alt="">
+							<img class="img-fluid" style="height: 200px; object-fit: cover; object-position: center center;" src="{{ url_for('static', filename='img/experiment_cgi.jpg') }}" alt="">
 							</figure>
 							<div class="overlay"></div>
 							<div class="text-wrap">
 								<h3>
-								<a href="#" style="font-family: Bree Serif, serif;">{{ post.title }} </a>
+								<a href="#" style="font-family: Bree Serif, serif;">Kozhikode </a>
 								</h3>
-								<a href="#" style="font-family: Bree Serif, serif;">{{ post.author.username }} </a>
-								<img class="rounded-circle article-img" style="height:50px; width:50px;" src="{{ url_for('static', filename='img/profilepic/' + post.author.image_file) }}">
 								<div class="blog-meta white d-flex justify-content-between align-items-center flex-wrap">
 									<div class="meta">
-									<a href="#">
-									<span class="icon fa fa-calendar"></span> {{ post.date_posted.strftime('%Y-%m-%d') }}
-									<span class="icon fa fa-comments"></span> 05
-									</a>
+									
 									</div>
 									<div>
-									<a class="read_more" href="{{ url_for('post', post_id=post.id) }}">Read More</a>
 									</div>
 								</div>
 							</div>
 							
 					</div>
-					{% endfor %}
+					
+					<div class="single_travel wow fadeIn" data-wow-duration="">
+						<figure>
+						<img class="img-fluid" style="height: 200px; object-fit: cover; object-position: center center;" src="{{ url_for('static', filename='img/evolve-1920x1080.jpg') }}" alt="">
+						</figure>
+						<div class="overlay"></div>
+						<div class="text-wrap">
+							<h3>
+							<a href="#" style="font-family: Bree Serif, serif;">Kannur </a>
+							</h3>
+							<div class="blog-meta white d-flex justify-content-between align-items-center flex-wrap">
+								<div class="meta">
+								
+								</div>
+								<div>
+								</div>
+							</div>
+						</div>
+						
+				</div>
+				<div class="single_travel wow fadeIn" data-wow-duration="">
+					<figure>
+					<img class="img-fluid" style="height: 200px; object-fit: cover; object-position: center center;" src="{{ url_for('static', filename='img/earth_3-2560x1440.jpg') }}" alt="">
+					</figure>
+					<div class="overlay"></div>
+					<div class="text-wrap">
+						<h3>
+						<a href="#" style="font-family: Bree Serif, serif;">Idukki </a>
+						</h3>
+						<div class="blog-meta white d-flex justify-content-between align-items-center flex-wrap">
+							<div class="meta">
+							</div>
+							<div>
+							</div>
+						</div>
+					</div>
+					
+			</div>
+			<div class="single_travel wow fadeIn" data-wow-duration="">
+				<figure>
+				<img class="img-fluid" style="height: 200px; object-fit: cover; object-position: center center;" src="{{ url_for('static', filename='img/earth_3-2560x1440.jpg') }}" alt="">
+				</figure>
+				<div class="overlay"></div>
+				<div class="text-wrap">
+					<h3>
+					<a href="#" style="font-family: Bree Serif, serif;">Palakkad </a>
+					</h3>
+					<div class="blog-meta white d-flex justify-content-between align-items-center flex-wrap">
+						<div class="meta">
+						</div>
+						<div>
+						</div>
+					</div>
+				</div>
+				
+		</div>
+		<div class="single_travel wow fadeIn" data-wow-duration="">
+			<figure>
+			<img class="img-fluid" style="height: 200px; object-fit: cover; object-position: center center;" src="{{ url_for('static', filename='img/fairy_deer_4k.jpg') }}" alt="">
+			</figure>
+			<div class="overlay"></div>
+			<div class="text-wrap">
+				<h3>
+				<a href="{{ url_for('gallery_by_district',district='Wayanad') }}" style="font-family: Bree Serif, serif;">Wayanad </a>
+				</h3>
+				<div class="blog-meta white d-flex justify-content-between align-items-center flex-wrap">
+					<div class="meta">
+					
+					</div>
+					<div>
+					</div>
+				</div>
+			</div>
+		</div>
 				</div>
 			
 			</div>
@@ -65,154 +132,34 @@
 		</div>
 		<div class="container-fluid">
 			<div class="row">
+				{% for post in posts %}
 				<div class="col-lg-6 col-md-12">
 					<div class="single_travel wow fadeInUp" data-wow-duration="1s">
 						<figure>
-							<img class="img-fluid w-100" src="{{ url_for('static', filename='img/blog-post/b1.jpg') }}" alt="">
+							<img class="img-fluid w-100" style="height: 300px; object-fit: cover; object-position: center center;" src="{{ url_for('static', filename='img/profilepic/'+post.image_file) }}" alt="">
 						</figure>
 						<div class="overlay"></div>
 						<div class="text-wrap">
 							<h3>
-								<a href="#" style="font-family: Bree Serif, serif;">Waterfall Travel</a>
+								<a href="{{ url_for('post',post_id=post.id) }}" style="font-family: Bree Serif, serif;">{{post.title}}</a>
 							</h3>
 							<div class="blog-meta white d-flex justify-content-between align-items-center flex-wrap">
 								<div class="meta">
 									<a href="#">
-										<span class="icon fa fa-calendar"></span> March 14, 2018
+										<span class="icon fa fa-calendar"></span> {{ post.date_posted.strftime('%Y-%m-%d') }}
 										<span class="icon fa fa-comments"></span> 05
 									</a>
 								</div>
 								<div>
-									<a class="read_more" href="#">Read More</a>
+									<a class="read_more" href="{{ url_for('post',post_id=post.id) }}">Read More</a>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="single_travel wow fadeInUp" data-wow-duration="1s" data-wow-delay=".2s">
-						<figure>
-							<img class="img-fluid w-100" src="{{ url_for('static', filename='img/blog-post/b2.jpg') }}" alt="">
-						</figure>
-						<div class="overlay"></div>
-						<div class="text-wrap">
-							<h3>
-								<a href="#" style="font-family: Bree Serif, serif;">Waterfall Mountain Island</a>
-							</h3>
-							<div class="blog-meta white d-flex justify-content-between align-items-center flex-wrap">
-								<div class="meta">
-									<a href="#">
-										<span class="icon fa fa-calendar"></span> March 14, 2018
-										<span class="icon fa fa-comments"></span> 05
-									</a>
-								</div>
-								<div>
-									<a class="read_more" href="#">Read More</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="single_travel wow fadeInUp" data-wow-duration="1s" data-wow-delay=".4s">
-						<figure>
-							<img class="img-fluid w-100" src="{{ url_for('static', filename='img/blog-post/b3.jpg') }}" alt="">
-						</figure>
-						<div class="overlay"></div>
-						<div class="text-wrap">
-							<h3>
-								<a href="#">Waterfall Mountain Island</a>
-							</h3>
-							<div class="blog-meta white d-flex justify-content-between align-items-center flex-wrap">
-								<div class="meta">
-									<a href="#">
-										<span class="icon fa fa-calendar"></span> March 14, 2018
-										<span class="icon fa fa-comments"></span> 05
-									</a>
-								</div>
-								<div>
-									<a class="read_more" href="#">Read More</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-lg-3 col-md-6">
-					<div class="single_travel wow fadeInUp mt--60" data-wow-duration="1s" data-wow-delay=".6s">
-						<figure>
-							<img class="img-fluid w-100" src="{{ url_for('static', filename='img/blog-post/b4.jpg') }}" alt="">
-						</figure>
-						<div class="overlay"></div>
-						<div class="text-wrap">
-							<h3>
-								<a href="#">Waterfall Mountain Island</a>
-							</h3>
-							<div class="blog-meta white d-flex justify-content-between align-items-center flex-wrap">
-								<div class="meta">
-									<a href="#">
-										<span class="icon fa fa-calendar"></span> March 14, 2018
-										<span class="icon fa fa-comments"></span> 05
-									</a>
-								</div>
-								<div>
-									<a class="read_more" href="#">Read More</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-lg-3 col-md-6">
-					<div class="single_travel wow fadeInUp mt--60" data-wow-duration="1s" data-wow-delay=".8s">
-						<figure>
-							<img class="img-fluid w-100" src="{{ url_for('static', filename='img/blog-post/b5.jpg') }}" alt="">
-						</figure>
-						<div class="overlay"></div>
-						<div class="text-wrap">
-							<h3>
-								<a href="#">Waterfall Mountain Island</a>
-							</h3>
-							<div class="blog-meta white d-flex justify-content-between align-items-center flex-wrap">
-								<div class="meta">
-									<a href="#">
-										<span class="icon fa fa-calendar"></span> March 14, 2018
-										<span class="icon fa fa-comments"></span> 05
-									</a>
-								</div>
-								<div>
-									<a class="read_more" href="#">Read More</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-lg-6 col-md-12">
-					<div class="single_travel wow fadeInUp" data-wow-duration="1s" data-wow-delay="1s">
-						<figure>
-							<img class="img-fluid w-100" src="{{ url_for('static', filename='img/blog-post/b6.jpg') }}" alt="">
-						</figure>
-						<div class="overlay"></div>
-						<div class="text-wrap">
-							<h3>
-								<a href="#">Waterfall Travel</a>
-							</h3>
-							<div class="blog-meta white d-flex justify-content-between align-items-center flex-wrap">
-								<div class="meta">
-									<a href="#">
-										<span class="icon fa fa-calendar"></span> March 14, 2018
-										<span class="icon fa fa-comments"></span> 05
-									</a>
-								</div>
-								<div>
-									<a class="read_more" href="#">Read More</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+				{% endfor %}
 			</div>
+			<!--
 			<div class="row">
 				<div class="offset-lg-7 col-lg-4">
 					<div class="blog-meta bottom d-flex justify-content-end align-items-center">
@@ -222,75 +169,11 @@
 					</div>
 				</div>
 			</div>
+			-->
 		</div>
 	</section>
 	<!--================ End Latest Blog Area =================-->
 
-	<section class="different_places">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="main_title">
-						<h1>Let Us Find Your Places Within a Sec.</h1>
-						<p>
-							There is a moment in the life of any aspiring astronomer that it is time to buy that first telescope. It’s
-							exciting to think
-							about setting up your own viewing station.
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-lg-3 col-md-6">
-					<div class="single_place wow fadeIn text-center mt-480" data-wow-duration="1s">
-						<img class="img-fluid w-100" src="img/places/p1.jpg" alt="">
-						<div class="overlay"></div>
-						<h4>Waterfall
-							<br> Mountain Island</h4>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="single_place wow fadeIn text-center mt-240" data-wow-duration="1s" data-wow-delay=".2s">
-						<img class="img-fluid w-100" src="img/places/p2.jpg" alt="">
-						<div class="overlay"></div>
-						<h4>Waterfall
-							<br> Mountain Island</h4>
-					</div>
-					<div class="single_place wow fadeIn text-center" data-wow-duration="1s" data-wow-delay="1s">
-						<img class="img-fluid w-100" src="img/places/p3.jpg" alt="">
-						<div class="overlay"></div>
-						<h4>Waterfall
-							<br> Mountain Island</h4>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="single_place wow fadeIn text-center" data-wow-duration="1s" data-wow-delay=".4s">
-						<img class="img-fluid w-100" src="img/places/p4.jpg" alt="">
-						<div class="overlay"></div>
-						<h4>Waterfall
-							<br> Mountain Island</h4>
-					</div>
-					<div class="single_place wow fadeIn text-center" data-wow-duration="1s" data-wow-delay=".8s">
-						<img class="img-fluid w-100" src="img/places/p5.jpg" alt="">
-						<div class="overlay"></div>
-						<h4>Waterfall
-							<br> Mountain Island</h4>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="single_place wow fadeIn text-center mt-240" data-wow-duration="1s" data-wow-delay=".6s">
-						<img class="img-fluid w-100" src="img/places/p6.jpg" alt="">
-						<div class="overlay"></div>
-						<h4>Waterfall
-							<br> Mountain Island</h4>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
 	{% endblock %}
-	<!--================ End Places Area =================-->
+	
 	

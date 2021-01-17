@@ -3,22 +3,16 @@ import secrets
 from PIL import Image
 from flask import render_template, url_for, flash, redirect, request, abort
 from travel import app, db, bcrypt
-from travel.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm
-from travel.models import User, Post
+from travel.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm, UpdateForm
+from travel.models import User, Post, Gallery
 from flask_login import login_user, current_user, logout_user, login_required
-from flask_admin import Admin
-from flask_admin.contrib.sqla import ModelView
-
-admin = Admin(app, name='admin', template_mode='bootstrap3')
-admin.add_view(ModelView(User, db.session))
-admin.add_view(ModelView(Post, db.session))
-app.config['FLASK_ADMIN_SWATCH'] = 'cerulean'
 
 # home and login route
 @app.route('/', methods=['GET', 'POST'])
 def home():
     lform = LoginForm()
     posts = Post.query.all()
+    gallery = Gallery.query.all()
     if lform.validate_on_submit():
         user = User.query.filter_by(email=lform.email.data).first()
         if user and bcrypt.check_password_hash(user.password, lform.password.data):
@@ -27,7 +21,7 @@ def home():
             return redirect(next_page) if next_page else redirect(url_for('home'))
         else:
             flash('Login Unsuccessfull. Please check email and password', 'danger') 
-    return render_template('index1.html', title='Home', lform=lform, posts=posts) 
+    return render_template('index1.html', title='Home', lform=lform, posts=posts, gallery=gallery) 
 # sign up route
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -48,7 +42,7 @@ def register():
 def logout():
      logout_user()
      return redirect(url_for('home'))
-
+"""
 def save_picture(form_picture):
     random_hex = secrets.token_hex(8)
     _, f_ext = os.path.splitext(form_picture.filename)
@@ -59,6 +53,16 @@ def save_picture(form_picture):
     i.thumbnail(output_size)
     i.save(picture_path)
     return picture_fn
+"""
+
+def save_picture(form_picture):
+    random_hex = secrets.token_hex(8)
+    _, f_ext = os.path.splitext(form_picture.filename)
+    picture_fn = random_hex + f_ext
+    picture_path = os.path.join(app.root_path, 'static/img/profilepic', picture_fn)
+    form_picture.save(picture_path)
+    return picture_fn
+
 @app.route('/profile', methods=['GET', 'POST'])
 @login_required
 def account():
@@ -88,7 +92,22 @@ def addstory():
         if form.picture.data:
             img_file = save_picture(form.picture.data)
             img = img_file
-        post = Post(title=form.title.data, content=form.content.data, image_file=img, user_id=current_user.id)
+        if form.picture2.data:
+            img_file2 = save_picture(form.picture2.data)
+            img2 = img_file2
+        else:
+            img2 = "null"
+        if form.picture3.data:
+            img_file3 = save_picture(form.picture3.data)
+            img3 = img_file3
+        else:
+            img3 = "null"
+        if form.picture4.data:
+            img_file4 = save_picture(form.picture4.data)
+            img4 = img_file4
+        else:
+            img4 = "null"
+        post = Post(title=form.title.data, place=form.place.data, content=form.content.data, content2=form.content2.data, content3=form.content3.data, content4=form.content4.data, image_file=img, image_file2=img2, image_file3=img3, image_file4=img4, user_id=current_user.id)
         db.session.add(post)
         db.session.commit()
         flash('Your Post hase been created!', 'success')
@@ -98,23 +117,67 @@ def addstory():
 def post(post_id):
     lform = LoginForm()
     post = Post.query.get_or_404(post_id)
-    return render_template('single-blog.html', title=post.title, post=post, lform=lform)
+    user = User.query.filter_by(id=post.user_id).first()
+    return render_template('single.html', title=post.title, post=post, lform=lform, user=user)
 @app.route('/post/<int:post_id>/update',  methods=['GET', 'POST'])
 def update_post(post_id):
     lform = LoginForm()
+    current_post = Post.query.filter_by(id=post_id).first()
     post = Post.query.get_or_404(post_id)
     if post.author != current_user:
         abort(403)
-    form = PostForm()
+    form = UpdateForm()
     if form.validate_on_submit():
+        if form.picture.data:
+            try:
+                os.unlink(os.path.join(app.root_path, 'static/img/profilepic', current_post.image_file))
+                img_file = save_picture(form.picture.data)
+                current_post.image_file = img_file
+            except:
+                img_file = save_picture(form.picture.data)
+                current_post.image_file = img_file
+        if form.picture2.data:
+            try:
+                os.unlink(os.path.join(app.root_path, 'static/img/profilepic', current_post.image_file2))
+                img_file2 = save_picture(form.picture2.data)
+                current_post.image_file2 = img_file2
+            except:
+                img_file2 = save_picture(form.picture2.data)
+                current_post.image_file2 = img_file2
+        if form.picture3.data:
+            try:
+                os.unlink(os.path.join(app.root_path, 'static/img/profilepic', current_post.image_file3))
+                img_file3 = save_picture(form.picture3.data)
+                current_post.image_file3 = img_file3
+            except:
+                img_file3 = save_picture(form.picture3.data)
+                current_post.image_file3 = img_file3
+        if form.picture4.data:
+            try:
+                os.unlink(os.path.join(app.root_path, 'static/img/profilepic', current_post.image_file4))
+                img_file4 = save_picture(form.picture4.data)
+                current_post.image_file4 = img_file4
+            except:
+                img_file4 = save_picture(form.picture4.data)
+                current_post.image_file4 = img_file4
         post.title = form.title.data
-        post.content = post.content
+        post.content = form.content.data
+        post.content2 = form.content2.data
+        post.content3 = form.content3.data
+        post.content4 = form.content4.data
         db.session.commit()
         flash('Your story has been updated', 'success')
         return redirect(url_for('post', post_id=post.id))
     elif request.method == 'GET':
         form.title.data = post.title
         form.content.data = post.content
+        form.content3.data = post.content3
+        form.content2.data = post.content2
+        form.content4.data = post.content4
+        form.picture.data = post.image_file
+        form.picture2.data = post.image_file2
+        form.picture3.data = post.image_file3
+        form.picture4.data = post.image_file4
     return render_template('updatestory.html', title='Update Story', lform=lform, form=form, post=post)
 @app.route('/post/<int:post_id>/delete',  methods=['POST'])
 @login_required
@@ -126,4 +189,17 @@ def delete_post(post_id):
     db.session.delete(post)
     db.session.commit()
     flash('Your story has been deleted', 'success')
-    return redirect(url_for('account', post=post))
+    return redirect(url_for('account', post=post ))
+
+# search
+@app.route('/search', methods=['POST'])
+def search():
+    lform = LoginForm()
+    place = request.form['search_place']
+    posts = Post.query.filter_by(place=place).all()
+    return render_template('search.html', title='Search result', lform=lform, posts=posts, place=place)
+@app.route('/gallery/<string:district>', methods=['GET', 'POST'])
+def gallery_by_district(district):
+    lform = LoginForm()
+    gallery = Gallery.query.filter_by(district=district).all()
+    return render_template('gallery.html', gallery=gallery, lform=lform)

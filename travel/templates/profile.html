@@ -90,7 +90,7 @@
                     </div>
                     <!-- End Edit Profile-->
                     <h6 class="font-weight-bold text-uppercase">{{ current_user.username }}</h6>
-                    <p class="text-primary">Web Developer and Designer</p>
+                    <p class="text-primary">Vlogger</p>
                     <p class="text-secondary"><small>RANKING : <b>8/10</b></small></p>
 
                     <nav class="py-2">
@@ -103,18 +103,16 @@
                         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                             <div class="row px-4 py-4">
                                 <div class="col-lg-6">
-                                    <p class="font-weight-bold">User Id</p>
                                     <p class="font-weight-bold">Name</p>
                                     <p class="font-weight-bold">Email</p>
                                     <p class="font-weight-bold">Phone</p>
                                     <p class="font-weight-bold">Profession</p>
                                 </div>
                                 <div class="col-lg-6">
-                                    <p class="text-primary">Johnwick007</p>
-                                    <p class="text-primary">John Wick</p>
-                                    <p class="text-primary">johnwick@bond.com</p>
+                                    <p class="text-primary">{{current_user.username}}</p>
+                                    <p class="text-primary">{{current_user.email}}</p>
                                     <p class="text-primary">1234567890</p>
-                                    <p class="text-primary">Profession</p>
+                                    <p class="text-primary">Vlogger</p>
                                 </div>
                             </div>
                         </div>
@@ -136,15 +134,23 @@
 
                                  </div>
                                 </article>-->
-                                <div class="card" style="width: 18rem;">
-                                    <div class="card-body">
-                                      <h5 class="card-title">{{ post.title }}</h5>
-                                      <h6 class="card-subtitle mb-2 text-muted"><small>{{ post.date_posted.strftime('%Y-%m-%d') }}</small></h6>
-                                      
-                                      <a href="{{ url_for('update_post',post_id=post.id) }}" class="btn btn-primary btn-sm  m-1">Edit</a>
-                                      <form action="{{ url_for('delete_post', post_id=post.id) }}" method="POST">
-                                        <input class="btn btn-danger btn-sm mb-1" type="submit" value="Delete"> 
-                                        </form>                           
+                                  <div class="card mb-3">
+                                    <div class="row no-gutters">
+                                      <div class="col-md-4">
+                                        <img src="{{ url_for('static',filename='/img/profilepic/'+post.image_file) }}" class="card-img" style="height: 150px;" alt="...">
+                                      </div>
+                                      <div class="col-md-6">
+                                        <div class="card-body">
+                                          <h5 class="card-title">{{ post.title }}</h5>
+                                          <p class="card-text"><small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small></p>
+                                        </div>
+                                      </div>
+                                      <div class="col-lg-2 px-4 py-4">
+                                        <a href="{{ url_for('update_post',post_id=post.id) }}" class="my-1 btn btn-primary d-flex flex-column ">Edit</a>
+                                        <form class="d-flex flex-column" action="{{ url_for('delete_post', post_id=post.id) }}" method="POST">
+                                            <input class="my-1 btn btn-danger" type="submit" value="Delete"> 
+                                        </form>
+                                      </div>
                                     </div>
                                   </div>
                                 {% endfor %}

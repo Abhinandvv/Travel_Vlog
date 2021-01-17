@@ -4,16 +4,16 @@
     <!--================ Banner Area =================-->    <!--================ End Banner Area =================-->
 
     <!--================Sign Up Area =================-->
-    <section class="contact_area section-gap">
+    <section class="footer-area">
         <div class="container text-center justify-content-center">
-           
-            <div class="map-wrap" style="width:100%;" id="mapBox"></div>
-            <div class="row">
-                
-                <div class="col-lg-9 mx-auto text-center justify-content-center">
+            <div class="row pb-5">
+                <div class="col-lg-12 pt-3">
+                    <h2 class="py-4 font-weight-bold">Sign Up</h2>
+                </div>
+                <div class="col-lg-6 mx-auto text-center justify-content-center border py-4 shadow-lg p-3 mb-5 bg-white rounded">
                     <form class="row signup_form" action="" method="POST" id="signuptForm">
                         {{ form.hidden_tag() }}
-                        <div class="col-md-6 mx-auto text-center justify-content-center col-md-offset-3" style="font-family: Bree Serif, serif;">
+                        <div class="col-md-10 mx-auto text-center justify-content-center col-md-offset-3" style="font-family: Bree Serif, serif;">
                            
                             <div class="form-group" >
                                 {{ form.username.label(class="control-label float-left") }}
@@ -72,8 +72,8 @@
                             </div>
                         </div>
                         
-                        <div class="col-md-12 mx-auto text-center justify-content-center" style="font-family: Bree Serif, serif;">
-                            {{ form.submit(class="btn submit_btn") }}
+                        <div class="col-md-10 pt-3 mx-auto text-center justify-content-center" style="font-family: Bree Serif, serif;">
+                            {{ form.submit(class="btn btn-success btn-lg btn-block") }}
                         
                         </div>
                     </form>

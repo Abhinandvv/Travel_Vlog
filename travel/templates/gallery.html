@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+
+ 
+    <!--================ Header Menu Area =================-->
+
+    <!--================ Banner Area =================-->
+    <!--<section class="home_banner_area banner_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5"></div>
+                <div class="col-lg-7">
+                    <div class="blog_text_slider">
+                        <div class="blog_text">
+                            <img class="img-fluid" src="img/banner/post-details-img.png" alt="">
+                            <div class="blog-meta bottom d-flex justify-content-start align-items-center flex-wrap">
+                                <div>
+                                    <a class="read_more" href="index.html">Home</a>
+                                    <span class="lnr lnr-arrow-right"></span>
+                                    <a class="read_more" href="single-blog.html">Post Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>-->
+    <!--================ End Banner Area =================-->
+
+    <!--================Blog Area =================-->
+    <section class="blog_area  single-post-area pt-4">
+        <div class="container">
+            <div class="row">
+                        {% for gallery in gallery %}
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="single_travel wow fadeInUp" data-wow-duration="1s" data-wow-delay=".2s">
+                                        <figure>
+                                            <img class="img-fluid w-100" src="{{ url_for('static', filename='img/profilepic/'+gallery.image_file) }}" alt="">
+                                        </figure>
+                                        <div class="overlay"></div>
+                                        <div class="text-wrap">
+                                            <h3>
+                                                <a href="#">{{ gallery.place }}</a>
+                                            </h3>
+                                            <div class="meta">
+                                                <a href="#">
+                                                    <span class="icon fa fa-calendar"></span> {{ gallery.date_posted.strftime('%Y-%m-%d') }}
+                                                    <span class="icon fa fa-comments"></span> 05
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
+                                {% endfor %}
+                                </div>
+                            </div>
+                            </section>       
+                        {% endblock %}                     

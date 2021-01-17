@@ -2,17 +2,18 @@
 {% block content %}
 
        <!--================Add Story Area =================-->
-    <section class="contact_area section-gap">
+    <section class="contact_area">
         <div class="container">
              <div class="row">
-                 <div class="col-lg-12 pb-5">
+                 <div class="col-lg-12 py-5">
                      <h2 class="text-center">Travel Blog</h2>
                  </div>
-                 <div class="col-lg-12 pt-4">
+                 <div class="col-lg-2"></div>
+                 <div class="col-lg-8 px-4 py-4 shadow-lg p-3 mb-5 bg-white rounded">
                     <form class="row contact_form" action="" method="post" enctype="multipart/form-data">
                     {{ form.hidden_tag() }}
                     <div class="col-md-12">
-                        {{ form.title.label(class="form-control-label") }}
+                        {{ form.title.label(class="form-control-label font-weight-bold") }}
 							{% if form.title.errors %}
 								{{ form.title(class="form-control is-invalid") }}
 								<div class="invalid-feedback">
@@ -24,45 +25,144 @@
 								{{ form.title(class="form-control") }} 
 							{% endif %}
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            {{ form.picture(class="form-control") }} 
-                        </div>
-                        <div class="form-group">
-                            <input type="file" class="form-control" name="img2">
-                        </div>
+                    <div class="col-md-12">
+                        {{ form.place.label(class="form-control-label font-weight-bold") }}
+							{% if form.place.errors %}
+								{{ form.place(class="form-control is-invalid") }}
+								<div class="invalid-feedback">
+									{% for error in form.place.errors %}
+									<span>{{ error }}</span>
+									{% endfor %}
+								</div>>
+								{% else %}
+								{{ form.place(class="form-control") }} 
+							{% endif %}
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="form-group">
-                            <input type="file" class="form-control" name="img3">
-                        </div>
-                        <div class="form-group">
-                            <input type="file" class="form-control" name="img4">
+                            <label class="font-weight-bold"> Image</label>
+                            {{ form.picture(class="form-control", multiple="multiple") }} 
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
-                            {{ form.content.label(class="form-control-label") }}
+                            {{ form.content.label(class="form-control-label font-weight-bold") }}
                             {% if form.content.errors %}
-                                {{ form.content(class="form-control is-invalid", placeholder="content") }}
+                                {{ form.content(class="form-control is-invalid border", placeholder="content") }}
                                 <div class="invalid-feedback">
                                     {% for error in form.content.errors %}
                                     <span>{{ error }}</span>
                                     {% endfor %}  
                                 </div>>
                                 {% else %}
-                                {{ form.content(class="form-control", placeholder="content") }} 
+                                {{ form.content(class="form-control border rounded", placeholder="content") }} 
                             {% endif %}
                         </div>
                     </div>
+                    
+                    <div class="col-md-12 py-2">
+                        <p class="px-4 font-weight-bold">
+                            <a class="text-info" data-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                Add More Image and Content
+                            </a>
+                        </p>
+                    </div>
+                    <div class="collapse row px-4" id="collapseExample1">
+                        <!--view more content-->
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="font-weight-bold"> Image</label>
+                                {{ form.picture2(class="form-control") }} 
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                {{ form.content2.label(class="form-control-label font-weight-bold") }}
+                                {% if form.content2.errors %}
+                                    {{ form.content2(class="form-control is-invalid", placeholder="content") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.content2.errors %}
+                                        <span>{{ error }}</span>
+                                        {% endfor %}  
+                                    </div>>
+                                    {% else %}
+                                    {{ form.content2(class="form-control border rounded", placeholder="content") }} 
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-md-12 py-2">
+                            <p class="px-4 font-weight-bold">
+                                <a class="text-info" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                    Add More Image and Content
+                                </a>
+                            </p>
+                        </div>
+                        <div class="collapse row px-4" id="collapseExample2">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="font-weight-bold"> Image</label>
+                                    {{ form.picture3(class="form-control") }} 
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    {{ form.content3.label(class="form-control-label font-weight-bold") }}
+                                    {% if form.content3.errors %}
+                                        {{ form.content3(class="form-control is-invalid", placeholder="content") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.content3.errors %}
+                                            <span>{{ error }}</span>
+                                            {% endfor %}  
+                                        </div>>
+                                        {% else %}
+                                        {{ form.content3(class="form-control border rounded", placeholder="content") }} 
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-md-12 py-2">
+                                <p class="px-4 font-weight-bold">
+                                    <a class="text-info" data-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                        Add More Image and Content
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                            <div class="collapse row px-4" id="collapseExample3">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="font-weight-bold"> Image</label>
+                                        {{ form.picture4(class="form-control") }} 
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        {{ form.content4.label(class="form-control-label font-weight-bold") }}
+                                        {% if form.content4.errors %}
+                                            {{ form.content4(class="form-control is-invalid", placeholder="content") }}
+                                            <div class="invalid-feedback">
+                                                {% for error in form.content4.errors %}
+                                                <span>{{ error }}</span>
+                                                {% endfor %}  
+                                            </div>>
+                                            {% else %}
+                                            {{ form.content4(class="form-control border rounded", placeholder="content") }} 
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                
+                        
                     <div class="col-md-12 text-right">
                         <div class="form-check mb-1">
                            
                           </div>
-                          {{ form.submit(class='btn btn-primary btn-block') }}
+                          <a class="btn btn-danger btn-lg" href="{{ url_for('home') }}" role="button">Cancel</a>
+                          {{ form.submit(class='btn btn-primary btn-lg') }}
                     </div>
                 </form>
                  </div>
+                 <div class="col-lg-2"></div>
              </div>
         </div>
     </section>
