@@ -62,3 +62,10 @@ class UpdateForm(FlaskForm):
     content3 =  TextAreaField('Content')
     content4 =  TextAreaField('Content')
     submit = SubmitField('Update Post')
+
+class FeedbackForm(FlaskForm):
+    name = StringField('Name', validators=[DataRequired()])
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    subject = StringField('Name', validators=[DataRequired()])
+    message =  TextAreaField('Content', validators=[DataRequired()])
+    submit = SubmitField('Send Message')

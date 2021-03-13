@@ -3,8 +3,8 @@ import secrets
 from PIL import Image
 from flask import render_template, url_for, flash, redirect, request, abort
 from travel import app, db, bcrypt
-from travel.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm, UpdateForm
-from travel.models import User, Post, Gallery
+from travel.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm, UpdateForm, FeedbackForm
+from travel.models import User, Post, Gallery, Feedback
 from flask_login import login_user, current_user, logout_user, login_required
 
 # home and login route
@@ -196,10 +196,22 @@ def delete_post(post_id):
 def search():
     lform = LoginForm()
     place = request.form['search_place']
-    posts = Post.query.filter_by(place=place).all()
-    return render_template('search.html', title='Search result', lform=lform, posts=posts, place=place)
+    post = Post.query.filter_by(place=place).all()
+    return render_template('search.html', title='Search result', lform=lform, post=post, place=place)
 @app.route('/gallery/<string:district>', methods=['GET', 'POST'])
 def gallery_by_district(district):
     lform = LoginForm()
     gallery = Gallery.query.filter_by(district=district).all()
     return render_template('gallery.html', gallery=gallery, lform=lform)
+
+@app.route('/about', methods=['GET','POST'])
+def about():
+    lform = LoginForm()
+    form = FeedbackForm()
+    if form.validate_on_submit():
+        feedback = Feedback(name=form.name.data, email=form.email.data, subject=form.subject.data, message=form.message.data)
+        db.session.add(feedback)
+        db.session.commit()
+        flash(f'Succcessfully submitted',)
+        return redirect(url_for('home'))
+    return render_template('contactus.html', title='About Us', lform=lform, form=form) 

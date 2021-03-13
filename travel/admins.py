@@ -5,7 +5,7 @@ from flask_admin.contrib.sqla import ModelView
 from flask_admin.contrib.fileadmin import FileAdmin
 from flask_admin import form
 from flask_admin.contrib import sqla
-from travel.models import User, Post, Gallery
+from travel.models import User, Post, Gallery, Feedback
 from flask_admin.menu import MenuLink
 from jinja2 import Markup
 
@@ -147,4 +147,5 @@ admin.add_link(logout_link)
 admin.add_view(UserView(User,db.session))
 admin.add_view(PostView(Post,db.session))   
 admin.add_view(GalleryView(Gallery,db.session))
+admin.add_view(ModelView(Feedback,db.session))
 # admin.add_link(MenuLink(name='Public Website', category=''))

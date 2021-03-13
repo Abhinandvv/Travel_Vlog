@@ -69,7 +69,7 @@
 				<a class="nav-link font-weight-bold text-white" href="{{ url_for('home') }}">Home</a>
 			  </li>
 			  <li class="nav-item">
-				<a class="nav-link font-weight-bold text-white" href="#">Contact</a>
+				<a class="nav-link font-weight-bold text-white" href="{{ url_for('about') }}">Contact</a>
 			  </li>
 			  {% if current_user.is_authenticated %}
 			  <li class="nav-item dropdown">
@@ -148,7 +148,7 @@
 			<div class="input-group mb-3">
 			  <input type="text" class="form-control" style="width: 25vmax;" placeholder="Search Place..." name="search_place" required>
 			  <div class="input-group-append">
-				<button class="btn btn-success" type="submit" id="button-addon2">Search</button>
+				<button class="btn btn-success" type="submit" id="button-addon2"><span class="icon fa fa-search"></span></button>
 			  </div>
 			</div>
 		  </form>

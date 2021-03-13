@@ -6,15 +6,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h3 class="text-center py-5">Search Results</h3>
+                    <h3 class="text-center py-5">Search Results for {{ place }}</h3>
                 </div>
                 <div class="col-md-12">
-                    {% if posts %}
+                    {% if post %}
                     {% else %}
                         <h5 class="text-center pb-5">Not Found</h5>
                     {% endif %}
                 </div>
-                {% for post in posts %}
+                {% for post in post %}
 				<div class="col-lg-6 col-md-12">
 					<div class="single_travel wow fadeInUp" data-wow-duration="1s">
 						<figure>
@@ -29,7 +29,7 @@
 								<div class="meta">
 									<a href="#">
 										<span class="icon fa fa-calendar"></span> {{ post.date_posted.strftime('%Y-%m-%d') }}
-										<span class="icon fa fa-comments"></span> 05
+										<span class="icon fa fa-map-marker"></span> {{post.place}}
 									</a>
 								</div>
 								<div>

@@ -17,6 +17,7 @@
 			
 			 <div class="row owl-carousel" id="travel_cat">
 				
+				
 				 	<div class="single_travel wow fadeIn" data-wow-duration="">
 							<figure>
 							<img class="img-fluid" style="height: 200px; object-fit: cover; object-position: center center;" src="{{ url_for('static', filename='img/experiment_cgi.jpg') }}" alt="">
@@ -24,7 +25,7 @@
 							<div class="overlay"></div>
 							<div class="text-wrap">
 								<h3>
-								<a href="#" style="font-family: Bree Serif, serif;">Kozhikode </a>
+								<a href="{{ url_for('gallery_by_district',district='Kozhikode') }}" style="font-family: Bree Serif, serif;">Kozhikode </a>
 								</h3>
 								<div class="blog-meta white d-flex justify-content-between align-items-center flex-wrap">
 									<div class="meta">
@@ -34,7 +35,6 @@
 									</div>
 								</div>
 							</div>
-							
 					</div>
 					
 					<div class="single_travel wow fadeIn" data-wow-duration="">
@@ -44,7 +44,7 @@
 						<div class="overlay"></div>
 						<div class="text-wrap">
 							<h3>
-							<a href="#" style="font-family: Bree Serif, serif;">Kannur </a>
+							<a href="{{ url_for('gallery_by_district',district='Kannur') }}" style="font-family: Bree Serif, serif;">Kannur </a>
 							</h3>
 							<div class="blog-meta white d-flex justify-content-between align-items-center flex-wrap">
 								<div class="meta">
@@ -54,8 +54,8 @@
 								</div>
 							</div>
 						</div>
-						
 				</div>
+				
 				<div class="single_travel wow fadeIn" data-wow-duration="">
 					<figure>
 					<img class="img-fluid" style="height: 200px; object-fit: cover; object-position: center center;" src="{{ url_for('static', filename='img/earth_3-2560x1440.jpg') }}" alt="">
@@ -63,7 +63,7 @@
 					<div class="overlay"></div>
 					<div class="text-wrap">
 						<h3>
-						<a href="#" style="font-family: Bree Serif, serif;">Idukki </a>
+						<a href="{{ url_for('gallery_by_district',district='Idukki') }}" style="font-family: Bree Serif, serif;">Idukki </a>
 						</h3>
 						<div class="blog-meta white d-flex justify-content-between align-items-center flex-wrap">
 							<div class="meta">
@@ -72,8 +72,8 @@
 							</div>
 						</div>
 					</div>
-					
 			</div>
+			
 			<div class="single_travel wow fadeIn" data-wow-duration="">
 				<figure>
 				<img class="img-fluid" style="height: 200px; object-fit: cover; object-position: center center;" src="{{ url_for('static', filename='img/earth_3-2560x1440.jpg') }}" alt="">
@@ -81,7 +81,7 @@
 				<div class="overlay"></div>
 				<div class="text-wrap">
 					<h3>
-					<a href="#" style="font-family: Bree Serif, serif;">Palakkad </a>
+					<a href="{{ url_for('gallery_by_district',district='Palakkad') }}" style="font-family: Bree Serif, serif;">Palakkad </a>
 					</h3>
 					<div class="blog-meta white d-flex justify-content-between align-items-center flex-wrap">
 						<div class="meta">
@@ -90,8 +90,8 @@
 						</div>
 					</div>
 				</div>
-				
 		</div>
+		
 		<div class="single_travel wow fadeIn" data-wow-duration="">
 			<figure>
 			<img class="img-fluid" style="height: 200px; object-fit: cover; object-position: center center;" src="{{ url_for('static', filename='img/fairy_deer_4k.jpg') }}" alt="">
@@ -110,6 +110,7 @@
 				</div>
 			</div>
 		</div>
+		
 				</div>
 			
 			</div>
@@ -147,7 +148,7 @@
 								<div class="meta">
 									<a href="#">
 										<span class="icon fa fa-calendar"></span> {{ post.date_posted.strftime('%Y-%m-%d') }}
-										<span class="icon fa fa-comments"></span> 05
+										<span class="icon fa fa-map-marker"></span> {{ post.place }}
 									</a>
 								</div>
 								<div>

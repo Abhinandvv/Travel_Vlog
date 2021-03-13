@@ -37,3 +37,11 @@ class Gallery(db.Model):
      image_file = db.Column(db.String(20), nullable=False)
      date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
      district =   db.Column(db.String(100), nullable=False)
+
+class Feedback(db.Model):
+     id = db.Column(db.Integer, primary_key=True)
+     name = db.Column(db.String(100))
+     email = db.Column(db.String(100), nullable=False)
+     subject = db.Column(db.String(100), nullable=False)
+     message = db.Column(db.Text, nullable=False)
+     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
